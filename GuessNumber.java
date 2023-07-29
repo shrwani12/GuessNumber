@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class GuessNumber 
+{
+	public static void main(String[] args) {
+
+	 int attempt = 1;
+        int userGuessNumber = 0;
+        int myNumber = (int) (Math.random() * 99 + 1);           
+        Scanner userInput = new Scanner(System.in);
+        System.out.println("Welcome to Guess Number Game \nYou have Maximum 5 Attemp Limit");
+        do {
+            System.out.print("Enter a guess number between 1 to 100\n");
+            if(userInput.hasNextInt()) {
+                userGuessNumber = userInput.nextInt();
+                if (userGuessNumber == myNumber)
+                {    
+                    System.out.println(" Your Number is Correct. You Win the Game!");
+                    break;
+                }
+                else if (userGuessNumber < myNumber)
+                    System.out.println("too lower...");
+                else if (userGuessNumber > myNumber)
+                    System.out.println("too higher...");
+                if(attempt == 5) {
+                   
+				   System.out.println("You have exceeded the maximum 5 attempt.");
+                    break;
+                }
+                attempt++;
+            }else {
+                System.out.println("Enter a Valid Integer Number");
+                break;
+            }
+        } while (userGuessNumber != myNumber);
+    }
+}
